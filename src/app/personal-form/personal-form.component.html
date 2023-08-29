@@ -1,0 +1,188 @@
+<div>
+  <!-- personal info -->
+
+  <form class="mainForm" [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="firstName" class="">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            formControlName="firstName"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            formControlName="lastName"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            type="number"
+            class="form-control"
+            id="phoneNumber"
+            formControlName="phoneNumber"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="skills">skills</label>
+        <input
+          type="text"
+          class="form-control"
+          id="skills"
+          formControlName="skills"
+        />
+      </div>
+    </div>
+  </form>
+
+  <!-- education info -->
+  <h1 class="py-3">Education</h1>
+  <form [formGroup]="eduData">
+    <div
+      *ngFor="let edu of eduData.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Degree Name</label>
+          <input
+            type="text"
+            name="DegreeName"
+            class="form-control"
+            formControlName="degName"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for=""> School Name</label>
+          <input
+            type="text"
+            name="SchoolName"
+            class="form-control"
+            formControlName="schoolName"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for=""> year: </label>
+        <input
+          type="month"
+          name="finishedYear"
+          class="form-control"
+          formControlName="finYear"
+        />
+        <div class="pt-3">
+          <button
+            class="form-control btn btn-outline-primary"
+            (click)="cvData.removeEdu(i)"
+          >
+            remove me
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="pt-3">
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="cvData.addEdu()"
+      >
+        add edu
+      </button>
+    </div>
+  </form>
+  <!-- <button type="submit">submit</button> -->
+  <h1 class="py-3">Experience</h1>
+  <form [formGroup]="expData">
+    <div
+      *ngFor="let exp of expData.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Job Title</label>
+          <input
+            type="text"
+            name=""
+            formControlName="jobTitle"
+            placeholder="web buddy"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label>Company Name</label>
+          <input
+            type="text"
+            name=""
+            class="form-control"
+            formControlName="compName"
+          />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>Start Month</label>
+          <input
+            type="month"
+            name=""
+            class="form-control"
+            formControlName="startMonth"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label>End Month</label>
+          <input
+            type="month"
+            name=""
+            class="form-control"
+            formControlName="endMonth"
+          />
+        </div>
+        <div class="form-group col">
+          <label>Experience Summary</label>
+          <textarea
+            name=""
+            class="form-control"
+            formControlName="expSummary"
+          ></textarea>
+        </div>
+      </div>
+      <div class="pt-3">
+        <button
+          class="btn btn-outline-primary btn-block"
+          type="button"
+          (click)="cvData.removeExp(i)"
+        >
+          remove me
+        </button>
+      </div>
+    </div>
+    <div class="pt-3">
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="cvData.addExp()"
+      >
+        add exp
+      </button>
+    </div>
+  </form>
+</div>
